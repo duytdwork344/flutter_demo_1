@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../controllers/home_controller.dart';
+import '../../registration/views/registration_view.dart';
+import '../../approval/views/approval_view.dart';
+import '../../salary/views/salary_view.dart';
 import '../../menu_detail/views/menu_detail_view.dart';
 
 class HomeView extends GetView<HomeController> {
@@ -300,7 +303,19 @@ Widget build(BuildContext context) {
   }
 
   void onMenuTap(String menuLabel) {
-    Get.to(() => const MenuDetailView(), arguments: menuLabel);
+    switch (menuLabel) {
+      case 'Đăng ký':
+        Get.to(() => const RegistrationView());
+        break;
+      case 'Phê duyệt':
+        Get.to(() => const ApprovalView());
+        break;
+      case 'Công lương':
+        Get.to(() => const SalaryView());
+        break;
+      default:
+        Get.to(() => const MenuDetailView(), arguments: menuLabel);
+    }
   }
 
   Widget _buildBottomBar(HomeController controller) {
