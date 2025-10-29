@@ -248,7 +248,7 @@ Widget build(BuildContext context) {
                 itemBuilder: (context, index) {
                   final menu = pageMenus[index];
                   return _buildMenuItem(menu['icon'] as IconData, menu['label'] as String, menu['color'] as Color,
-                  () => onMenuTap(menu['label'] as String)
+                  () => controller.onMenuTap(menu['label'] as String)
                   );
                 },
               );
@@ -302,21 +302,7 @@ Widget build(BuildContext context) {
     );
   }
 
-  void onMenuTap(String menuLabel) {
-    switch (menuLabel) {
-      case 'Đăng ký':
-        Get.to(() => const RegistrationView());
-        break;
-      case 'Phê duyệt':
-        Get.to(() => const ApprovalView());
-        break;
-      case 'Công lương':
-        Get.to(() => const SalaryView());
-        break;
-      default:
-        Get.to(() => const MenuDetailView(), arguments: menuLabel);
-    }
-  }
+
 
   Widget _buildBottomBar(HomeController controller) {
     return Container(
